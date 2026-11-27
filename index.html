@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>GroguXino</title>
+</head>
+
+<body>
+    <video id="vid" src="WhatsApp Video 2026-11-27 at 11.45.13 AM.mp4" autoplay loop playsinline></video>
+
+    <script>
+        const vid = document.getElementById("vid");
+
+        function intentarSonar() {
+            vid.muted = false;
+            vid.volume = 1;
+            vid.play().catch(() => {
+                // Si Chrome bloquea el audio sin gesto previo, arranca muteado
+                // y queda listo para sonar apenas haya un clic o tecla
+                vid.muted = true;
+                vid.play().catch(() => { });
+            });
+        }
+
+        function activarAlInteractuar() {
+            vid.muted = false;
+            vid.volume = 1;
+            vid.play().catch(() => { });
+        }
+
+        window.addEventListener("DOMContentLoaded", intentarSonar);
+        window.addEventListener("load", intentarSonar);
+        window.addEventListener("pageshow", intentarSonar);
+
+        window.addEventListener("click", activarAlInteractuar);
+        window.addEventListener("keydown", activarAlInteractuar);
+        window.addEventListener("pointerdown", activarAlInteractuar);
+        window.addEventListener("touchstart", activarAlInteractuar);
+    </script>
+</body>
+
+</html>
